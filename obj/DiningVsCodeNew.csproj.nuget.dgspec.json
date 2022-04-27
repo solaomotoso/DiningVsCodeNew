@@ -46,9 +46,33 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "RepoDb": {
+              "target": "Package",
+              "version": "[1.12.10, )"
+            },
+            "RepoDb.SqlServer": {
+              "target": "Package",
+              "version": "[1.1.5, )"
+            },
+            "RepoDb.SqlServer.BulkOperations": {
+              "target": "Package",
+              "version": "[1.1.6, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "System.Configuration.ConfigurationManager": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.3, )"
             }
           },
           "imports": [
