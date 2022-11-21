@@ -55,6 +55,27 @@ namespace DiningVsCodeNew
             }
           return users;
         }
+        public User GetUser(int id)
+        {  
+          
+           var user= new User();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                
+               user = connection.Query<User>(id).FirstOrDefault();
+            }
+          return user;
+        }
+        public User GetUser(string username)
+        {  
+          
+           var user= new User();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+               user = connection.Query<User>(e=>e.userName==username).FirstOrDefault();
+            }
+          return user;
+        }
          
     }
     public class CustomerTypeRepository: BaseRepository<CustomerType, SqlConnection>
@@ -88,7 +109,7 @@ namespace DiningVsCodeNew
         {
             
            //var user=new User();
-           Setting sett=new Setting();
+        //  Setting sett=new Setting();
            List<CustomerType> CustomerTypes=new List<CustomerType>();
            using (var connection = new SqlConnection(sett.ConString))
             {
@@ -99,13 +120,97 @@ namespace DiningVsCodeNew
         }
          
     }
+     public class PaymentModeRepository: BaseRepository<PaymentMode, SqlConnection>
+    {
+       
+        Setting sett=new Setting();
+        public PaymentModeRepository(Setting sett) : base(sett.ConString)
+        {
+            this.sett=sett;
+            DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
+            DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
+            StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
+        }
+        public  void insertPaymentMode(PaymentMode pymtMode)
+        {
+            
+            this.Insert(pymtMode);
+        }
+        public  void updatePaymentMode(PaymentMode pymtMode)
+        {
+           
+            this.Update(pymtMode);
+        }
+        public int deletePaymentMode(PaymentMode pymtMode)
+        {
+            //CustomerTypeRepository custTypeRepository = new CustomerTypeRepository(cstring);
+            int id = this.Delete<PaymentMode>(pymtMode);
+            return id;
+        }
+        public List<PaymentMode> GetPaymentModes()
+        {
+            
+           //var user=new User();
+        //  Setting sett=new Setting();
+           List<PaymentMode> paymentmodes=new List<PaymentMode>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 paymentmodes = connection.QueryAll<PaymentMode>().ToList();
+                /* Do the stuffs for the people here */
+            }
+          return paymentmodes;
+        }
+         
+    }
+     public class OrderedMealRepository: BaseRepository<OrderedMeal, SqlConnection>
+    {
+       
+        Setting sett=new Setting();
+        public OrderedMealRepository(Setting sett) : base(sett.ConString)
+        {
+            this.sett=sett;
+            DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
+            DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
+            StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
+        }
+        public  void insertOrderedMeal(OrderedMeal orderedMeal)
+        {
+            
+            this.Insert(orderedMeal);
+        }
+        public  void updateOrderedMeal(OrderedMeal orderedMeal)
+        {
+           
+            this.Update(orderedMeal);
+        }
+        public int deleteOrderedMeal(OrderedMeal orderedMeal)
+        {
+            //CustomerTypeRepository custTypeRepository = new CustomerTypeRepository(cstring);
+            int id = this.Delete<OrderedMeal>(orderedMeal);
+            return id;
+        }
+        public List<OrderedMeal> GetOrderedMeals()
+        {
+            
+           //var user=new User();
+        //  Setting sett=new Setting();
+           List<OrderedMeal> orderedMeals=new List<OrderedMeal>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 orderedMeals = connection.QueryAll<OrderedMeal>().ToList();
+                /* Do the stuffs for the people here */
+            }
+          return orderedMeals;
+        }
+         
+    }
 
      public class MenuRepository: BaseRepository<Menu, SqlConnection>
     {
         Setting sett=new Setting();
         public MenuRepository(Setting sett) : base(sett.ConString)
         {
-             this.sett=sett;
+            this.sett=sett;
             DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
             DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
             StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
@@ -129,14 +234,28 @@ namespace DiningVsCodeNew
         public List<Menu> GetMenus()
         {
             
-           Setting sett=new Setting();
+        //    Setting sett=new Setting();
            List<Menu> menus=new List<Menu>();
            using (var connection = new SqlConnection(sett.ConString))
             {
-                 menus = connection.QueryAll<Menu>().ToList();
+                menus = connection.ExecuteQuery<Menu>("[dbo].[usp_getmenus]",
+                commandType: System.Data.CommandType.StoredProcedure).ToList(); 
+                 //menus = connection.QueryAll<Menu>().ToList();
                 /* Do the stuffs for the people here */
             }
           return menus;
+        }
+
+         public Menu GetMenu(int id)
+        {  
+          
+           var menu= new Menu();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                
+               menu = connection.Query<Menu>(id).FirstOrDefault();
+            }
+          return menu;
         }
          
     }
@@ -208,17 +327,18 @@ namespace DiningVsCodeNew
             int id = this.Delete<PaymentDetails>(pymtDetails);
             return id;
         }
-        public List<PaymentDetails> GetPymtDetCategories()
+        public List<PaymentDetails> GetPymtDetails()
         {
             
           List<PaymentDetails> pymtDetails=new List<PaymentDetails>();
            using (var connection = new SqlConnection(sett.ConString))
             {
-             
-                pymtDetails = connection.QueryAll<PaymentDetails>().ToList();
+                pymtDetails = connection.ExecuteQuery<PaymentDetails>("[dbo].[usp_getpaymentdetails]",
+                commandType: System.Data.CommandType.StoredProcedure).ToList(); 
                 /* Do the stuffs for the people here */
             }
           return pymtDetails;
+         
         }
          
     }
@@ -295,11 +415,26 @@ namespace DiningVsCodeNew
            List<Voucher> vouchers=new List<Voucher>();
            using (var connection = new SqlConnection(sett.ConString))
             {
-                 vouchers = connection.QueryAll<Voucher>().ToList();
+                 vouchers = connection.ExecuteQuery<Voucher>("[dbo].[usp_getvoucherdetails]",
+                commandType: System.Data.CommandType.StoredProcedure).ToList();
                 /* Do the stuffs for the people here */
             }
           return vouchers;
         }
+
+        public List<Voucher> GetVouchers(int custTypeid)
+        {  
+          
+           List<Voucher> vouchers=new List<Voucher>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+               vouchers = connection.Query<Voucher>(e=>e.Custtypeid==custTypeid).ToList();
+            //    (e=>e.Custtypeid==custTypeid).ToList();
+            }
+          return vouchers;
+        }
+
+       
          
     }
 

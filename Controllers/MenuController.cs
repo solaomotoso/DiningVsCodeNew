@@ -5,47 +5,40 @@ namespace DiningVsCodeNew.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class MenuController : ControllerBase
 {
-        UserRepository repuser;
-         int idvalue=0;
-        public UserController(UserRepository repUser)
+        MenuRepository repMenu;
+        public MenuController(MenuRepository repMenu)
         {
-            this.repuser=repUser;
+            this.repMenu=repMenu;
         }
         // GET: api/Cities
         [HttpGet]
-        public async Task<ActionResult> GetUsers()
+        public async Task<ActionResult> GetMenus()
         {
-            return new OkObjectResult(repuser.GetUsers());
+            return new OkObjectResult(repMenu.GetMenus());
         }
         // GET: api/Cities/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+       [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetMenu(int id)
         {
-            return new OkObjectResult(repuser.GetUser(id));
+            return new OkObjectResult(repMenu.GetMenu(id));
           
-        }
-
-         [HttpGet("getuser/{userName}")]
-         public async Task<ActionResult<User>> GetUser(string username)
-        {
-            return new OkObjectResult(repuser.GetUser(username));  
         }
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id,  User user )
-        { 
-            if (id != user.id)
+        public async Task<IActionResult> PutMenu(int id, Menu menu)
+        {
+            if (id != menu.Id)
             {
                 return BadRequest();
             }
            // _context.Entry(state).State = EntityState.Modified;
            
-                repuser.updateUser(user);
-                return new OkObjectResult(user);
+                repMenu.updateMenu(menu);
+                return Ok("Record updated successfully");
            
            // catch (DbUpdateConcurrencyException)
            // {
@@ -63,27 +56,28 @@ public class UserController : ControllerBase
         // To protect from overposting attacks, see https://go.microsoft.com/
         //fwlink /? linkid = 2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<Menu>> PostMenu(Menu menu)
         {
            
-            if (user!=null)
+            if (menu!=null)
             {
-                repuser.insertUser(user);
+                repMenu.insertMenu(menu);
             }
-            return Ok(user);
+            return Ok("Posted succesfully");
             
         }
         // DELETE: api/Cities/5
-        [HttpPost("deleteuser")]
-        public async  Task <IActionResult> Delete([FromBody] User us)  
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Menu>> DeleteMenu(int id,Menu menu)  
             {
               
-                // if (idvalue != us.id)
-                //  {
-                //  return NotFound();
-                //  }
-                idvalue = repuser.deleteUser(us);
-                return Ok(us);
+              
+                if (id != menu.Id)
+                 {
+                 return NotFound();
+                }
+                 id= repMenu.deleteMenu(menu);
+                return Ok("Record Deleted succesfully");
             }
         //private bool StateExists(int id)
        // {

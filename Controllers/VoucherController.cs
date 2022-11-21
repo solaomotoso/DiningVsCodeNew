@@ -5,47 +5,40 @@ namespace DiningVsCodeNew.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class UserController : ControllerBase
+public class VoucherController : ControllerBase
 {
-        UserRepository repuser;
-         int idvalue=0;
-        public UserController(UserRepository repUser)
+        VoucherRepository RepVoucher;
+        public VoucherController(VoucherRepository repVoucher)
         {
-            this.repuser=repUser;
+            this.RepVoucher=repVoucher;
         }
         // GET: api/Cities
         [HttpGet]
-        public async Task<ActionResult> GetUsers()
+        public async Task<ActionResult> GetVouchers()
         {
-            return new OkObjectResult(repuser.GetUsers());
+            return new OkObjectResult(RepVoucher.GetPymtVouchers());
         }
         // GET: api/Cities/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetVoucher(int id)
         {
-            return new OkObjectResult(repuser.GetUser(id));
+            return new OkObjectResult(RepVoucher.GetVouchers(id));
           
-        }
-
-         [HttpGet("getuser/{userName}")]
-         public async Task<ActionResult<User>> GetUser(string username)
-        {
-            return new OkObjectResult(repuser.GetUser(username));  
         }
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id,  User user )
-        { 
-            if (id != user.id)
+        public async Task<IActionResult> PutVoucher(int id, Voucher voucher)
+        {
+            if (id != voucher.Id)
             {
                 return BadRequest();
             }
            // _context.Entry(state).State = EntityState.Modified;
            
-                repuser.updateUser(user);
-                return new OkObjectResult(user);
+                RepVoucher.updateVoucher(voucher);
+                return Ok("Record updated successfully");
            
            // catch (DbUpdateConcurrencyException)
            // {
@@ -63,27 +56,28 @@ public class UserController : ControllerBase
         // To protect from overposting attacks, see https://go.microsoft.com/
         //fwlink /? linkid = 2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<Voucher>> PostVoucher(Voucher voucher)
         {
            
-            if (user!=null)
+            if (voucher!=null)
             {
-                repuser.insertUser(user);
+                RepVoucher.insertVoucher(voucher);
             }
-            return Ok(user);
+            return Ok(voucher);
             
         }
         // DELETE: api/Cities/5
-        [HttpPost("deleteuser")]
-        public async  Task <IActionResult> Delete([FromBody] User us)  
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Voucher>> DeleteVoucher(int id,Voucher voucher)  
             {
               
-                // if (idvalue != us.id)
-                //  {
-                //  return NotFound();
-                //  }
-                idvalue = repuser.deleteUser(us);
-                return Ok(us);
+              
+                if (id != voucher.Id)
+                 {
+                 return NotFound();
+                }
+                 id= RepVoucher.deleteVoucher(voucher);
+                return Ok("Record Deleted succesfully");
             }
         //private bool StateExists(int id)
        // {

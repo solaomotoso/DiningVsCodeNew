@@ -67,3 +67,9 @@ C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\obj\Debug\net6.0\Dini
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\obj\Debug\net6.0\DiningVsCodeNew.genruntimeconfig.cache
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\obj\Debug\net6.0\ref\DiningVsCodeNew.dll
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\System.Web.Cors.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\System.Net.Http.Formatting.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\System.Web.Http.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\System.Web.Http.Cors.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

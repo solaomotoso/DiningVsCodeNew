@@ -16,11 +16,16 @@ builder.Configuration
  builder.Services.AddSingleton<Setting>(setting);
  Setting.initializeRepoDb();
  builder.Services.AddSingleton<UserRepository>();
- builder.Services.AddSingleton<CustomerTypeRepository>();
  builder.Services.AddSingleton<MenuRepository>();
-//builder.Services.AddScoped<IRepository, MemoryRepository>();
-
+ builder.Services.AddSingleton<VoucherRepository>();
+ builder.Services.AddSingleton<CustomerTypeRepository>();
+ builder.Services.AddSingleton<PaymentMainRepository>();
+ builder.Services.AddSingleton<PaymentDetailsRepository>();
+ builder.Services.AddSingleton<MenuRepository>(); 
+ builder.Services.AddSingleton<PaymentModeRepository>();
+ builder.Services.AddSingleton<OrderedMealRepository>();
 var app = builder.Build();
+app.UseCors(option=>option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
