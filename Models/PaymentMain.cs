@@ -8,6 +8,7 @@ namespace DiningVsCodeNew
          public int CustTypeiD { get; set; }
          public string? CustCode { get; set; }
          public int VoucherId {get;set;}
+         public int Unit {get;set;}
          public float Amount {get;set;}
          public Boolean Served {get;set;}
          public DateTime DateServed { get; set; }
