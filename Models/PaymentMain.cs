@@ -14,6 +14,9 @@ namespace DiningVsCodeNew
          public DateTime DateServed { get; set; }
          public string ServedBy { get; set; }
          public int Paymentmodeid {get;set;}
+         public Boolean Paid { get; set; }
+
+         public DateTime timepaid { get; set; }
 
     }
    
