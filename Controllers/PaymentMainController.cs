@@ -19,16 +19,16 @@ public class PaymentMainController : ControllerBase
             return RepPymtMain.GetPymtMains();
         }
         // GET: api/Cities/5
-        [HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUser(int id)
-       // {
-           // var user = await repuser.getUsers(id);
-           // if (user == null)
-           // {
-              //  return NotFound();
-           // }
-          //  return user;
-       // }
+        // [HttpGet("{id}")]
+    //     public async Task<ActionResult<PaymentMain>> GetPymtMain(int id)
+    //    {
+    //     //    var user = await repuser.getUsers(id);
+    //        if (id != null)
+    //        {
+    //            return new OkObjectResult(repuser.GetUsers());
+    //        }
+         
+    //    }
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754

@@ -20,15 +20,10 @@ public class PaymentDetailsController : ControllerBase
         }
         // GET: api/Cities/5
         [HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUser(int id)
-       // {
-           // var user = await repuser.getUsers(id);
-           // if (user == null)
-           // {
-              //  return NotFound();
-           // }
-          //  return user;
-       // }
+        public async Task<ActionResult<IEnumerable<PaymentDetails>>> GetPaymentDetailss(int id)
+       {
+          return new OkObjectResult(repPayDetails.GetPymtDetails(id));
+       }
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754

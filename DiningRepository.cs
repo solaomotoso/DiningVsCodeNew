@@ -340,6 +340,19 @@ namespace DiningVsCodeNew
           return pymtDetails;
          
         }
+           public List<PaymentDetails> GetPymtDetails(int userid)
+        {
+            
+           //var user=new User();
+           List<PaymentDetails> paymentDetailss=new List<PaymentDetails>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 paymentDetailss = connection.ExecuteQuery<PaymentDetails>("[dbo].[usp_getpaymentdetailsbyuser]", 
+               new { userID = userid}, commandType: System.Data.CommandType.StoredProcedure).ToList();
+                /* Do the stuffs for the people here */
+            }
+          return paymentDetailss;
+        }
          
     }
      public class PaymentMainRepository: BaseRepository<PaymentMain, SqlConnection>
@@ -380,6 +393,8 @@ namespace DiningVsCodeNew
             }
           return pymtMains;
         }
+       
+
          
     }
      public class VoucherRepository: BaseRepository<Voucher, SqlConnection>
