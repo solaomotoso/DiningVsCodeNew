@@ -66,6 +66,7 @@ public class PaymentMainController : ControllerBase
             if (pymtMain!=null)
             {
                 pymtMain.DateServed=DateTime.Now;
+                pymtMain.timepaid=DateTime.Now;
                 RepPymtMain.insertPaymentMain(pymtMain);
             }
             return Ok(pymtMain);
