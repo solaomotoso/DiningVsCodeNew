@@ -66,17 +66,14 @@ public class PaymentDetailsController : ControllerBase
             
         }
         // DELETE: api/Cities/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<PaymentDetails>> DeletePymtDetails(int id,PaymentDetails pymtDetails)  
+         [HttpPost("deletepymtdetails")]
+        public async Task<IActionResult> deletepymtdetails([FromBody] PaymentDetails pymtdetails)  
             {
-              
-              
-                if (id != pymtDetails.id)
-                 {
-                 return NotFound();
-                }
-                 id= repPayDetails.deletePymtDetails(pymtDetails);
-                return Ok("Record Deleted succesfully");
+            //   string test=Request.Headers["Test"];
+               int idvalue=0;
+               idvalue = repPayDetails.deletePymtDetails(pymtdetails);
+                return Ok(pymtdetails);
+                
             }
         //private bool StateExists(int id)
        // {

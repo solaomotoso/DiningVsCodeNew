@@ -73,18 +73,15 @@ public class PaymentMainController : ControllerBase
             
         }
         // DELETE: api/Cities/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<PaymentMain>> DeletePymtMain(int id,PaymentMain pymtMain)  
+        [HttpPost("deletepymtmain")]
+        public async Task<IActionResult> delete([FromBody] PaymentMain pymtMain)  
             {
-              
-              
-                if (id != pymtMain.Id)
-                 {
-                 return NotFound();
-                }
-
-                 id= RepPymtMain.deletePymtMain(pymtMain);
-                return Ok("Record Deleted succesfully");
+                pymtMain.DateServed=DateTime.Now;
+                pymtMain.timepaid=DateTime.Now;
+               int idvalue=0;
+               idvalue = RepPymtMain.deletePymtMain(pymtMain);
+                return Ok(pymtMain);
+                
             }
         //private bool StateExists(int id)
        // {

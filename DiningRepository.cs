@@ -378,8 +378,12 @@ namespace DiningVsCodeNew
         public int deletePymtMain(PaymentMain pymtMain)
         {
             //PaymentMainRepository pymtMainRepository = new PaymentMainRepository(constringPymtMain);
-            int id = this.Delete<PaymentMain>(pymtMain);
-            return id;
+           
+            using (var connection = new SqlConnection(sett.ConString))
+            {
+                var deletedrows = connection.Delete<PaymentMain>(pymtMain.Id);
+                 return deletedrows;
+            }
         }
         public List<PaymentMain> GetPymtMains()
         {
