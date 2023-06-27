@@ -32,28 +32,13 @@ public class PaymentMainController : ControllerBase
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPymtMain(int id, PaymentMain pymtMain)
+        [HttpPut("updatepayment")]
+        public async Task<IActionResult> PutPymtMain([FromBody] PaymentMain pymtMain)
         {
-            if (id != pymtMain.Id)
-            {
-                return BadRequest();
-            }
-           // _context.Entry(state).State = EntityState.Modified;
-           
+
                 RepPymtMain.updatePaymentMain(pymtMain);
-                 return new OkObjectResult(pymtMain);
+                return new OkObjectResult(pymtMain);
            
-           // catch (DbUpdateConcurrencyException)
-           // {
-               // if (!StateExists(id))
-              //  {
-                  //  return NotFound();
-               // }
-               // else
-              //  {
-                   // throw;
-               // }
         }
             //return NoContent();
         // POST: api/Cities

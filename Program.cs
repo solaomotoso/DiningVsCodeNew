@@ -24,6 +24,7 @@ builder.Configuration
  builder.Services.AddSingleton<MenuRepository>(); 
  builder.Services.AddSingleton<PaymentModeRepository>();
  builder.Services.AddSingleton<OrderedMealRepository>();
+ builder.Services.AddSingleton<OnlinePaymentRepository>();
 var app = builder.Build();
 app.UseCors(option=>option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 

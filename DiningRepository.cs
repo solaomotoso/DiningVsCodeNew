@@ -10,7 +10,7 @@ using RepoDb.DbHelpers;
 using RepoDb.DbSettings;
 using RepoDb.Enumerations;
 using RepoDb.StatementBuilders;
-
+using DiningVsCodeNew.Models;
 
 namespace DiningVsCodeNew
 {
@@ -78,6 +78,71 @@ namespace DiningVsCodeNew
         }
          
     }
+    public class OnlinePaymentRepository: BaseRepository<OnlinePayment, SqlConnection>
+    {
+        
+        //Setting cstring=new Setting();
+         Setting sett=new Setting();
+        public OnlinePaymentRepository(Setting sett) : base(sett.ConString)
+        {
+            this.sett=sett;
+            DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
+            DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
+            StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
+
+        }
+        public  void insertOnlinePayment(OnlinePayment onlinepymt)
+        {
+            //UserRepository usrrepository = new UserRepository(cstring.ConString);
+            this.Insert(onlinepymt);
+        }
+        public  void updateOnlinePayment(OnlinePayment onlinepymt)
+        {
+           
+            this.Update(onlinepymt);
+        }
+        public int deleteOnlinePayment(OnlinePayment onlinepymt)
+        {
+           
+            int id = this.Delete<OnlinePayment>(onlinepymt);
+            return id;
+        }
+        public List<OnlinePayment> GetOnlinePayments()
+        {  
+          
+           var onlinepayments= new List<OnlinePayment>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                onlinepayments = connection.QueryAll<OnlinePayment>().ToList();
+                /* Do the stuffs for the people here */
+            }
+          return onlinepayments;
+        }
+        public OnlinePayment GetOnlinePayment(int id)
+        {  
+          
+           var onlinepayment= new OnlinePayment();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                
+               onlinepayment = connection.Query<OnlinePayment>(id).FirstOrDefault();
+            }
+          return onlinepayment;
+        }
+        // public User GetOnlinePayment(string username)
+        // {  
+          
+        //    var user= new User();
+        //    using (var connection = new SqlConnection(sett.ConString))
+        //     {
+        //        user = connection.Query<User>(e=>e.userName==username).FirstOrDefault();
+        //     }
+        //   return user;
+        // }
+         
+    }
+   
+    
     public class CustomerTypeRepository: BaseRepository<CustomerType, SqlConnection>
     {
        
