@@ -17,6 +17,7 @@ namespace DiningVsCodeNew
          public Boolean Paid { get; set; }
 
          public DateTime timepaid { get; set; }
+         public int opaymentid { get; set; }
 
     }
    

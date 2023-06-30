@@ -5,13 +5,14 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
-    <PackageReference Include="RepoDb" Version="1.12.10"/>
-    <PackageReference Include="RepoDb.SqlServer" Version="1.1.5"/>
-    <PackageReference Include="RepoDb.SqlServer.BulkOperations" Version="1.1.6"/>
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.3"/>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0"/>
-    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1"/>
-    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.9"/>
+    <PackageReference Include="NETCore.MailKit" Version="2.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+    <PackageReference Include="RepoDb" Version="1.12.10" />
+    <PackageReference Include="RepoDb.SqlServer" Version="1.1.5" />
+    <PackageReference Include="RepoDb.SqlServer.BulkOperations" Version="1.1.6" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.9" />
   </ItemGroup>
 </Project>

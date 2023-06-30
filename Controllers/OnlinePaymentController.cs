@@ -22,7 +22,7 @@ public class OnlinePaymentController : ControllerBase
         }
         // GET: api/Cities/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetOnlinePayment(int id)
+        public async Task<ActionResult<OnlinePayment>> GetOnlinePayment(int id)
         {
             return new OkObjectResult(reponlinePayment.GetOnlinePayment(id));
           

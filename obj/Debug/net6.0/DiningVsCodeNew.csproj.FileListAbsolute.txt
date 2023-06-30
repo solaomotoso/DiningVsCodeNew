@@ -73,3 +73,7 @@ C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Syst
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\System.Web.Http.Cors.dll
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\MailKit.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\MimeKit.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\NETCore.MailKit.dll
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Debug\net6.0\BouncyCastle.Crypto.dll

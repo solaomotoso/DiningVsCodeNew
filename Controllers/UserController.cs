@@ -1,17 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using DiningVsCodeNew;
 
+
 namespace DiningVsCodeNew.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
+       
         UserRepository repuser;
+         private EmailConfiguration _emailConfig;
          int idvalue=0;
-        public UserController(UserRepository repUser)
+        public UserController(UserRepository repUser,EmailConfiguration emailConfig)
         {
             this.repuser=repUser;
+            this._emailConfig=emailConfig;
         }
         // GET: api/Cities
         [HttpGet]
@@ -65,7 +69,11 @@ public class UserController : ControllerBase
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-           
+            
+        //     EmailSender _emailSender=new EmailSender(this._emailConfig);
+        //    var message = new Message(new string[] { "olusola.omotoso@evercare.ng" }, "Test email", "This is the content from our email.");
+        //    _emailSender.SendEmail(message);
+        //    await _emailSender.SendEmailAsync(message);
             if (user!=null)
             {
                 repuser.insertUser(user);
