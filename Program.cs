@@ -29,7 +29,9 @@ builder.Configuration
  builder.Services.AddSingleton<PaymentModeRepository>();
  builder.Services.AddSingleton<OrderedMealRepository>();
  builder.Services.AddSingleton<OnlinePaymentRepository>();
+ builder.Services.AddSingleton<ServedRepository>();
 var app = builder.Build();
+// var app = builder.Build();
 app.UseCors(option=>option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.

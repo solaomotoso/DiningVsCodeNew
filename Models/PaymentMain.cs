@@ -1,3 +1,5 @@
+using DiningVsCodeNew.Models;
+
 namespace DiningVsCodeNew
 {
     public class PaymentMain
@@ -18,6 +20,8 @@ namespace DiningVsCodeNew
 
          public DateTime timepaid { get; set; }
          public int opaymentid { get; set; }
+         
+         public OnlinePayment onlinePayment { get; set; }
 
     }
    

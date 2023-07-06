@@ -78,6 +78,69 @@ namespace DiningVsCodeNew
         }
          
     }
+    public class ServedRepository: BaseRepository<Served, SqlConnection>
+    {
+        
+        //Setting cstring=new Setting();
+         Setting sett=new Setting();
+        public ServedRepository(Setting sett) : base(sett.ConString)
+        {
+            this.sett=sett;
+            DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
+            DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
+            StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
+
+        }
+        public  void insertServed(Served serv)
+        {
+            //UserRepository usrrepository = new UserRepository(cstring.ConString);
+            this.Insert(serv);
+        }
+        public  void updateServed(Served serv)
+        {
+           
+            this.Update(serv);
+        }
+        public int deleteServed(Served serv)
+        {
+           
+            int id = this.Delete<Served>(serv);
+            return id;
+        }
+        public List<Served> GetServeds()
+        {  
+          
+           var serveds= new List<Served>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                serveds = connection.QueryAll<Served>().ToList();
+                /* Do the stuffs for the people here */
+            }
+          return serveds;
+        }
+        public Served GetServed(int id)
+        {  
+          
+           var served= new Served();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                
+               served = connection.Query<Served>(id).FirstOrDefault();
+            }
+          return served;
+        }
+        // public Served GetServed(string username)
+        // {  
+          
+        //    var user= new User();
+        //    using (var connection = new SqlConnection(sett.ConString))
+        //     {
+        //        user = connection.Query<User>(e=>e.userName==username).FirstOrDefault();
+        //     }
+        //   return user;
+        // }
+         
+    }
     public class OnlinePaymentRepository: BaseRepository<OnlinePayment, SqlConnection>
     {
         
@@ -461,6 +524,30 @@ namespace DiningVsCodeNew
                 /* Do the stuffs for the people here */
             }
           return pymtMains;
+        }
+         public List<PaymentByCust> GetPaidPymts()
+        {
+            
+           //var user=new User();
+           List<PaymentByCust> paidpymts=new List<PaymentByCust>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 paidpymts = connection.ExecuteQuery<PaymentByCust>("[dbo].[usp_getPymtByCust]",
+                commandType: System.Data.CommandType.StoredProcedure).ToList();
+            }
+          return paidpymts;
+        }
+
+          public List<PaymentMain> GetPaidPymtsByCust()
+        {
+            
+           List<PaymentMain> paidpymts=new List<PaymentMain>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 paidpymts = connection.ExecuteQuery<PaymentMain>("[dbo].[usp_getPaidPymtByCust]",
+                commandType: System.Data.CommandType.StoredProcedure).ToList();
+            }
+          return paidpymts;
         }
        
 
