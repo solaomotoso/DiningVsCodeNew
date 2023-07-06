@@ -24,9 +24,9 @@ public class PaymentMainController : ControllerBase
             return RepPymtMain.GetPaidPymts();
         }
          [HttpGet("getpaidpymtsbyCust")]
-        public async Task<ActionResult<IEnumerable<PaymentMain>>> GetPaidPaymentsbyCust()
+        public async Task<ActionResult<IEnumerable<PaymentMain>>> GetPaidPaymentsbyCust([FromBody] PaymentByCust custpymt)
         {
-            return RepPymtMain.GetPaidPymtsByCust();
+            return RepPymtMain.GetPaidPymtsByCust(custpymt.enteredBy);
         }
        
         [HttpPut("updatepayment")]

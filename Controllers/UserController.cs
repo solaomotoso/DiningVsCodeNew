@@ -70,8 +70,9 @@ public class UserController : ControllerBase
         public async Task<ActionResult<User>> PostUser(User user)
         {
             
-        //     EmailSender _emailSender=new EmailSender(this._emailConfig);
-        //    var message = new Message(new string[] { "olusola.omotoso@evercare.ng" }, "Test email", "This is the content from our email.");
+            EmailSender _emailSender=new EmailSender(this._emailConfig);
+            // Email em=new Email();
+        //    var message = new Message(new string[] { user.userName },"New User",em.EmailContentNewUser(user.firstName));
         //    _emailSender.SendEmail(message);
         //    await _emailSender.SendEmailAsync(message);
             if (user!=null)

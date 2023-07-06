@@ -538,14 +538,14 @@ namespace DiningVsCodeNew
           return paidpymts;
         }
 
-          public List<PaymentMain> GetPaidPymtsByCust()
+          public List<PaymentMain> GetPaidPymtsByCust(string enteredby)
         {
             
            List<PaymentMain> paidpymts=new List<PaymentMain>();
            using (var connection = new SqlConnection(sett.ConString))
             {
                  paidpymts = connection.ExecuteQuery<PaymentMain>("[dbo].[usp_getPaidPymtByCust]",
-                commandType: System.Data.CommandType.StoredProcedure).ToList();
+               new{enteredby=enteredby}, commandType: System.Data.CommandType.StoredProcedure).ToList();
             }
           return paidpymts;
         }
