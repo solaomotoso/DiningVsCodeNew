@@ -71,10 +71,16 @@ public class UserController : ControllerBase
         {
             
             EmailSender _emailSender=new EmailSender(this._emailConfig);
-            // Email em=new Email();
-        //    var message = new Message(new string[] { user.userName },"New User",em.EmailContentNewUser(user.firstName));
-        //    _emailSender.SendEmail(message);
-        //    await _emailSender.SendEmailAsync(message);
+            Email em=new Email();
+            string logourl="https://evercaregroup.com/wp-content/uploads/2020/12/EVERCARE_LOGO_03_LEKKI_PRI_FC_RGB.png";
+            string applink="Visit Evercare's Dining Application";
+            string salutation="Dear "+user.firstName+",";
+            string emailcontent="Your account has been successfully created on Evercare's Dining Application. You can now enjoy a seamless dining experience with our app.";
+            string narration1="Thank you for choosing Evercare Kitchens!";
+            string econtent=em.HtmlMail("Welcome to Evercare's Dining Application",applink,salutation,emailcontent,narration1,logourl);
+            var message = new Message(new string[] { user.userName },"Dining Application",econtent);
+            //  _emailSender.SendEmail(message);
+            await _emailSender.SendEmailAsync(message);
             if (user!=null)
             {
                 repuser.insertUser(user);

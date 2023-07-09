@@ -113,8 +113,13 @@ namespace DiningVsCodeNew
            var serveds= new List<Served>();
            using (var connection = new SqlConnection(sett.ConString))
             {
-                serveds = connection.QueryAll<Served>().ToList();
-                /* Do the stuffs for the people here */
+                 var sql = "SELECT * FROM [dbo].[Served] Where isserved=0";
+                 serveds = connection.ExecuteQuery<Served>(sql).ToList();
+                // serveds = connection.QueryAll<Served>(e => e.isServed == 0).ToList();
+                foreach (Served sv in serveds)
+                {
+                    sv.paymentMain=connection.Query<PaymentMain>(sv.paymentMainId).FirstOrDefault();
+                }
             }
           return serveds;
         }

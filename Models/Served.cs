@@ -9,6 +9,8 @@ namespace DiningVsCodeNew
     public PaymentMain paymentMain { get; set; }
     public DateTime Dateserved { get; set; }
     public int ServedBy { get; set; }
+    public bool isServed { get; set; }
+    public int paymentMainId { get; set; }
 }
 
 }

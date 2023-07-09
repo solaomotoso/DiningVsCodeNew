@@ -62,11 +62,6 @@ public class ServedController : ControllerBase
         [HttpPost]
         public async Task<ActionResult<User>> PostServ(Served serv)
         {
-            
-        //     EmailSender _emailSender=new EmailSender(this._emailConfig);
-        //    var message = new Message(new string[] { "olusola.omotoso@evercare.ng" }, "Test email", "This is the content from our email.");
-        //    _emailSender.SendEmail(message);
-        //    await _emailSender.SendEmailAsync(message);
             if (serv!=null)
             {
                 repserv.insertServed(serv);
