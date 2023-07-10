@@ -44,16 +44,14 @@ public class ServedController : ControllerBase
                 repserv.updateServed(serv);
                 return new OkObjectResult(serv);
            
-           // catch (DbUpdateConcurrencyException)
-           // {
-               // if (!StateExists(id))
-              //  {
-                  //  return NotFound();
-               // }
-               // else
-              //  {
-                   // throw;
-               // }
+        }
+        [HttpPut("updateServed")]
+        public async Task<IActionResult> PutPymtMain([FromBody]  Served serv)
+        {
+
+               repserv.updateServed(serv);
+                return new OkObjectResult(serv);
+           
         }
             //return NoContent();
         // POST: api/Cities
