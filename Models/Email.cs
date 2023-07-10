@@ -11,7 +11,7 @@ namespace DiningVsCodeNew
                      string htmlBody  = "<table><tr><td colspan='4' style='font-family: Century Gothic;font-weight: bold; font-style: italic; font-size: 14pt;color: #FF0000;'>" +
                                         "<div style='max-width: 600px;margin: 0 auto;padding: 20px;'>" +
                                         "<div style='text-align: center;margin-bottom: 20px;'>" +
-                                        "<img src='"+logourl+"' style='width: 20px;'>" +
+                                        "<img src='"+logourl+"' style='width: 150px;'>" +
                                         "</div>"+
                                         "<h1 style='color: #004085;text-align: center;font-size: 24px;margin-top: 0;'>"+narration+"</h1>"+
                                         "<div style='padding: 20px;background-color: #f8f9fa;border-radius: 5px;'>"+

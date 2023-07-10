@@ -74,11 +74,12 @@ public class ServedController : ControllerBase
         public async  Task <IActionResult> Delete([FromBody] Served serv)  
             {
               
-                // if (idvalue != us.id)
-                //  {
-                //  return NotFound();
-                //  }
-                idvalue = repserv.deleteServed(serv);
+                Served sv=new Served();
+                sv.Id=serv.Id;
+                sv.Dateserved=serv.Dateserved;
+                sv.isServed=serv.isServed;
+                // sv.paymentMain=serv.paymentMain;        
+                idvalue = repserv.deleteServed(sv);
                 return Ok(serv);
             }
         //private bool StateExists(int id)

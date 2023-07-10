@@ -103,8 +103,13 @@ namespace DiningVsCodeNew
         }
         public int deleteServed(Served serv)
         {
+            int id=0;
+            using (var connection = new SqlConnection(ConnectionString))
+            {
+                var deletedRows = connection.Delete<Served>(p => p.Id == serv.Id);
+                id=deletedRows;
+            }
            
-            int id = this.Delete<Served>(serv);
             return id;
         }
         public List<Served> GetServeds()

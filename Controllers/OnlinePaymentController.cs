@@ -9,10 +9,14 @@ namespace DiningVsCodeNew.Controllers;
 public class OnlinePaymentController : ControllerBase
 {
        private OnlinePaymentRepository reponlinePayment;
+       private UserRepository repuser;
          int idvalue=0;
-        public OnlinePaymentController(OnlinePaymentRepository reponlinePymt)
+          private EmailConfiguration _emailConfig;
+        public OnlinePaymentController(OnlinePaymentRepository reponlinePymt,EmailConfiguration emailConfig,UserRepository repUser)
         {
             this.reponlinePayment=reponlinePymt;
+             this._emailConfig=emailConfig;
+             this.repuser=repUser;
         }
         // GET: api/Cities
         [HttpGet]
@@ -69,6 +73,18 @@ public class OnlinePaymentController : ControllerBase
            
             if (onlinePymt!=null)
             {
+                User us=new User();
+                us=repuser.GetUser(onlinePymt.Paidby);
+                EmailSender _emailSender=new EmailSender(this._emailConfig);
+                Email em=new Email();
+                string logourl="https://evercaregroup.com/wp-content/uploads/2020/12/EVERCARE_LOGO_03_LEKKI_PRI_FC_RGB.png";
+                string applink="Visit Evercare's Dining Application";
+                string salutation="Dear "+us.firstName+",";
+                string emailcontent="Thank you for your payment. We have successfully received your payment of: "+onlinePymt.AmountPaid.ToString();
+                string narration1=" ";
+                string econtent=em.HtmlMail("Payment Confirmation",applink,salutation,emailcontent,narration1,logourl);
+                var message = new Message(new string[] { us.userName },"Dining Application",econtent);
+                await _emailSender.SendEmailAsync(message);
                 reponlinePayment.insertOnlinePayment(onlinePymt);
             }
             return Ok(onlinePymt);
