@@ -128,6 +128,22 @@ namespace DiningVsCodeNew
             }
           return serveds;
         }
+         public List<Served> GetServedbyCustomer(int id)
+        {  
+          
+           var serveds= new List<Served>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 var sql = "SELECT * FROM [dbo].[Served] S inner join paymentmain P on S.paymentmainid=P.id Where isserved=0 and P.enteredby=@id";
+                 serveds = connection.ExecuteQuery<Served>(sql,new {id=id}).ToList();
+                // serveds = connection.QueryAll<Served>(e => e.isServed == 0).ToList();
+                foreach (Served sv in serveds)
+                {
+                    sv.paymentMain=connection.Query<PaymentMain>(sv.paymentMainId).FirstOrDefault();
+                }
+            }
+          return serveds;
+        }
         public Served GetServed(int id)
         {  
           

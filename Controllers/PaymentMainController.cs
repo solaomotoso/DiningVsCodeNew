@@ -23,7 +23,7 @@ public class PaymentMainController : ControllerBase
         {
             return RepPymtMain.GetPaidPymts();
         }
-         [HttpGet("getpaidpymtsbyCust")]
+         [HttpPost("getpaidpymtsbyCust")]
         public async Task<ActionResult<IEnumerable<PaymentMain>>> GetPaidPaymentsbyCust([FromBody] PaymentByCust custpymt)
         {
             return RepPymtMain.GetPaidPymtsByCust(custpymt.enteredBy);
@@ -32,7 +32,7 @@ public class PaymentMainController : ControllerBase
         [HttpPut("updatepayment")]
         public async Task<IActionResult> PutPymtMain([FromBody] PaymentMain pymtMain)
         {
-
+                pymtMain.DateServed=DateTime.Now;
                 RepPymtMain.updatePaymentMain(pymtMain);
                 return new OkObjectResult(pymtMain);
            

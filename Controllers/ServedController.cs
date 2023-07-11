@@ -23,6 +23,11 @@ public class ServedController : ControllerBase
         {
             return new OkObjectResult(repserv.GetServeds());
         }
+         [HttpPost("{getServedbyCustomer}")]
+        public async Task<ActionResult> GetServed([FromBody] User us)
+        {
+            return new OkObjectResult(repserv.GetServedbyCustomer(us.id));
+        }
         // GET: api/Cities/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetServed(int id)
