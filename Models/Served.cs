@@ -7,8 +7,6 @@ namespace DiningVsCodeNew
     public class Served
 {
     public int Id { get; set; }
-
-    [JsonIgnore]
     public int paymentMainId { get; set; }
     public PaymentMain paymentMain { get; set; }
     public DateTime Dateserved { get; set; }

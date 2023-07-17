@@ -22,6 +22,7 @@ namespace DiningVsCodeNew
          public int opaymentid { get; set; }
          
          public OnlinePayment onlinePayment { get; set; }
+         public int PaymentType { get; set; }
 
     }
    

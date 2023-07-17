@@ -356,6 +356,22 @@ namespace DiningVsCodeNew
             }
           return orderedMeals;
         }
+         public List<OrderedMeal> GetOrderedMealsbyCust(User us)
+        {
+ 
+           List<OrderedMeal> orderedMeals=new List<OrderedMeal>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 var sql = "SELECT * FROM [dbo].[orderedmeal]  Where submitted=0 and enteredby=@enteredby";
+                 orderedMeals = connection.ExecuteQuery<OrderedMeal>(sql,new {Enteredby=us.id}).ToList();
+                // serveds = connection.QueryAll<Served>(e => e.isServed == 0).ToList();
+                foreach (OrderedMeal ord in orderedMeals)
+                {
+                    ord.menu=connection.Query<Menu>(ord.MealId).FirstOrDefault();
+                }
+            }
+          return orderedMeals;
+        }
          
     }
 

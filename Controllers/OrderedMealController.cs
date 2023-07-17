@@ -19,16 +19,12 @@ public class OrderedMealController : ControllerBase
             return new OkObjectResult(ordMeal.GetOrderedMeals());
         }
         // GET: api/Cities/5
-        [HttpGet("{id}")]
-        //public async Task<ActionResult<User>> GetUser(int id)
-       // {
-           // var user = await repuser.getUsers(id);
-           // if (user == null)
-           // {
-              //  return NotFound();
-           // }
-          //  return user;
-       // }
+         [HttpPost("getordmealsbycust")]
+        public async Task<ActionResult<IEnumerable<OrderedMeal>>> GetPaidPaymentsbyCust([FromBody] User us)
+        {
+            return ordMeal.GetOrderedMealsbyCust(us);
+        }
+       
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754
@@ -72,7 +68,6 @@ public class OrderedMealController : ControllerBase
             return new OkObjectResult(omeal);
             
         }
-        // DELETE: api/Cities/5
         [HttpDelete("{id}")]
         public async Task<ActionResult<OrderedMeal>> DeleteOrderedMeal(int id,OrderedMeal oMeal)  
             {
