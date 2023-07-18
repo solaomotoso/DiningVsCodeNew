@@ -20,7 +20,7 @@ public class OrderedMealController : ControllerBase
         }
         // GET: api/Cities/5
          [HttpPost("getordmealsbycust")]
-        public async Task<ActionResult<IEnumerable<OrderedMeal>>> GetPaidPaymentsbyCust([FromBody] User us)
+        public async Task<ActionResult<IEnumerable<OrderedMeal>>> GetorderedMealsbyCust([FromBody] User us)
         {
             return ordMeal.GetOrderedMealsbyCust(us);
         }
@@ -68,17 +68,13 @@ public class OrderedMealController : ControllerBase
             return new OkObjectResult(omeal);
             
         }
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<OrderedMeal>> DeleteOrderedMeal(int id,OrderedMeal oMeal)  
+         [HttpPost("deleteorderedmeal")]
+        public async  Task <IActionResult> Delete([FromBody] OrderedMeal omeal)  
             {
               
-              
-                if (id != oMeal.Id)
-                 {
-                 return NotFound();
-                }
-                 id= ordMeal.deleteOrderedMeal(oMeal);
-                return new OkObjectResult(oMeal);
+                
+                var id = ordMeal.deleteOrderedMeal(omeal);
+                return Ok(omeal);
             }
         //private bool StateExists(int id)
        // {

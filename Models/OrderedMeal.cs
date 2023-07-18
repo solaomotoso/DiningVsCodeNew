@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace DiningVsCodeNew
 {
     public class OrderedMeal
@@ -8,6 +10,7 @@ namespace DiningVsCodeNew
          public int MealId { get; set; }
          public string EnteredBy { get; set; }
          public float Amount { get; set; }
+         [JsonIgnore]
          public Menu menu { get; set; }
          public DateTime DateEntered { get; set; }
          public Boolean Active { get; set; }

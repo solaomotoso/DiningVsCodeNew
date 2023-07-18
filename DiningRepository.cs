@@ -339,9 +339,13 @@ namespace DiningVsCodeNew
         }
         public int deleteOrderedMeal(OrderedMeal orderedMeal)
         {
-            //CustomerTypeRepository custTypeRepository = new CustomerTypeRepository(cstring);
-            int id = this.Delete<OrderedMeal>(orderedMeal);
-            return id;
+            using (var connection = new SqlConnection(sett.ConString))
+            {
+                 var sql = "delete FROM [dbo].[orderedmeal]  Where  id=@Id";
+                 int id = connection.ExecuteNonQuery(sql,new {id=orderedMeal.Id});
+                 return id;
+            }
+            
         }
         public List<OrderedMeal> GetOrderedMeals()
         {
