@@ -19,6 +19,7 @@ namespace DiningVsCodeNew
         public int voucherid {get;set;}
         public int custtypeid { get; set; }
         public int unit { get; set; }
+        public int Paymenttype { get; set; }
     }
     
 }
