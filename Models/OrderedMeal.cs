@@ -13,5 +13,6 @@ namespace DiningVsCodeNew
          public DateTime DateEntered { get; set; }
          public Boolean Active { get; set; }
          public Boolean Submitted { get; set; }
+         public int paymentMainId { get; set; }
     }
 }

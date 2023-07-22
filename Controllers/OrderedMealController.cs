@@ -24,7 +24,11 @@ public class OrderedMealController : ControllerBase
         {
             return ordMeal.GetOrderedMealsbyCust(us);
         }
-       
+         [HttpPost("getordmealsbypymtid")]
+        public async Task<ActionResult<IEnumerable<OrderedMeal>>> GetorderedMealsbyPymtId([FromBody] PaymentMain pymtmain)
+        {
+            return ordMeal.GetPaidOrderedMeals(pymtmain);
+        }
         // PUT: api/users/5
         // To protect from overposting attacks, see https://go.microsoft.com/
         // fwlink/?linkid=2123754

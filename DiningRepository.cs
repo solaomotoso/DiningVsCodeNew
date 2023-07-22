@@ -376,6 +376,22 @@ namespace DiningVsCodeNew
             }
           return orderedMeals;
         }
+          public List<OrderedMeal> GetPaidOrderedMeals(PaymentMain pymain)
+        {
+ 
+           List<OrderedMeal> orderedMeals=new List<OrderedMeal>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 var sql = "SELECT * FROM [dbo].[orderedmeal]  Where submitted=1 and paymentMainId=@paymentMainId";
+                 orderedMeals = connection.ExecuteQuery<OrderedMeal>(sql,new {paymentMainId=pymain.Id}).ToList();
+                // serveds = connection.QueryAll<Served>(e => e.isServed == 0).ToList();
+                foreach (OrderedMeal ord in orderedMeals)
+                {
+                    ord.menu=connection.Query<Menu>(ord.MealId).FirstOrDefault();
+                }
+            }
+          return orderedMeals;
+        }
          
     }
 
