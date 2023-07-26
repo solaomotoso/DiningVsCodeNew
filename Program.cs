@@ -30,6 +30,7 @@ builder.Configuration
  builder.Services.AddSingleton<OrderedMealRepository>();
  builder.Services.AddSingleton<OnlinePaymentRepository>();
  builder.Services.AddSingleton<ServedRepository>();
+ builder.Services.AddSingleton<CustomerRouteRepository>();
 var app = builder.Build();
 // var app = builder.Build();
 app.UseCors(option=>option.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

@@ -1,6 +1,11 @@
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\DiningVsCodeNew.exe
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\publish\web.config
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\appsettings.Development.json
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\appsettings.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\publish\appsettings.Development.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\publish\appsettings.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\publish\DiningVsCodeNew.deps.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\publish\DiningVsCodeNew.runtimeconfig.json
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\DiningVsCodeNew.dll
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\DiningVsCodeNew.deps.json
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\publish\DiningVsCodeNew.runtimeconfig.json

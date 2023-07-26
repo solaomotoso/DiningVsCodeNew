@@ -274,6 +274,49 @@ namespace DiningVsCodeNew
         }
          
     }
+     public class CustomerRouteRepository: BaseRepository<CustomerRoute, SqlConnection>
+    {
+       
+        Setting sett=new Setting();
+        public CustomerRouteRepository(Setting sett) : base(sett.ConString)
+        {
+            this.sett=sett;
+            DbSettingMapper.Add<SqlConnection>(new SqlServerDbSetting(), true);
+            DbHelperMapper.Add<SqlConnection>(new SqlServerDbHelper(), true);
+            StatementBuilderMapper.Add<SqlConnection>(new SqlServerStatementBuilder(new SqlServerDbSetting()),true);
+        }
+        public  void insertCustomerRoute(CustomerRoute CustRoute)
+        {
+            
+            this.Insert(CustRoute);
+        }
+        public  void updateCustomerType(CustomerRoute CustRoute)
+        {
+           
+            this.Update(CustRoute);
+        }
+        public int deleteCustomerType(CustomerRoute CustRoute)
+        {
+            //CustomerTypeRepository custTypeRepository = new CustomerTypeRepository(cstring);
+            int id = this.Delete<CustomerRoute>(CustRoute);
+            return id;
+        }
+        public List<Route> GetCustomerRoutes(User us)
+        {
+            
+           //var user=new User();
+        //  Setting sett=new Setting();
+           List<Route> routes=new List<Route>();
+           using (var connection = new SqlConnection(sett.ConString))
+            {
+                 var sql = "select id,path,menuname FROM [dbo].[Route] Where id in (select routeid from customerroute where custtypeid=@custtypeid)";
+                 routes=  connection.ExecuteQuery<Route>(sql,new {custtypeid=us.custTypeId}).ToList();
+                /* Do the stuffs for the people here */
+            }
+          return routes;
+        }
+         
+    }
      public class PaymentModeRepository: BaseRepository<PaymentMode, SqlConnection>
     {
        
