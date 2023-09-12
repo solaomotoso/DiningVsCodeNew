@@ -1,13 +1,17 @@
 using DiningVsCodeNew.Models;
+using Sieve.Attributes;
 
 namespace DiningVsCodeNew
 {
 
     public class PaymentByCust
-{
-    public string enteredBy { get; set; }
-    public string custCode { get; set; }
-    public float totalAmount { get; set; }
-}
+    {
+        [Sieve(CanSort = true, CanFilter =true)]
+        public string enteredBy { get; set; }
+
+        [Sieve(CanSort = true, CanFilter = true)]
+        public string custCode { get; set; }
+        public float totalAmount { get; set; }
+    }
 
 }

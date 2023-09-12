@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using DiningVsCodeNew;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DiningVsCodeNew.Controllers;
 
@@ -19,7 +20,7 @@ public class VoucherController : ControllerBase
             return new OkObjectResult(RepVoucher.GetPymtVouchers());
         }
         // GET: api/Cities/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize]
         public async Task<ActionResult<User>> GetVoucher(int id)
         {
             return new OkObjectResult(RepVoucher.GetVouchers(id));

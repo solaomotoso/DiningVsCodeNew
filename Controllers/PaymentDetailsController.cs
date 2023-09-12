@@ -34,26 +34,12 @@ public class PaymentDetailsController : ControllerBase
             {
                 return BadRequest();
             }
-           // _context.Entry(state).State = EntityState.Modified;
            
                 repPayDetails.updatePaymentDetails(pymtDetails);
                  return new OkObjectResult(pymtDetails);
            
-           // catch (DbUpdateConcurrencyException)
-           // {
-               // if (!StateExists(id))
-              //  {
-                  //  return NotFound();
-               // }
-               // else
-              //  {
-                   // throw;
-               // }
         }
-            //return NoContent();
-        // POST: api/Cities
-        // To protect from overposting attacks, see https://go.microsoft.com/
-        //fwlink /? linkid = 2123754
+
         [HttpPost]
         public async Task<ActionResult<PaymentDetails>> PostPymtDetails(PaymentDetails pymtDetails)
         {

@@ -267,7 +267,8 @@ namespace DiningVsCodeNew
            List<CustomerType> CustomerTypes=new List<CustomerType>();
            using (var connection = new SqlConnection(sett.ConString))
             {
-                 CustomerTypes = connection.QueryAll<CustomerType>().ToList();
+                 var sql = "select id,Name from CustomerType where isvisible=1";
+                 CustomerTypes = connection.ExecuteQuery<CustomerType>(sql).ToList();
                 /* Do the stuffs for the people here */
             }
           return CustomerTypes;
@@ -630,17 +631,18 @@ namespace DiningVsCodeNew
             }
           return pymtMains;
         }
-         public List<PaymentByCust> GetPaidPymts()
+        public IQueryable<PaymentByCust> GetPaidPymts()
         {
-            
-           //var user=new User();
-           List<PaymentByCust> paidpymts=new List<PaymentByCust>();
-           using (var connection = new SqlConnection(sett.ConString))
+
+            //var user=new User();
+            List<PaymentByCust> paidpymts=new List<PaymentByCust>();
+            // IQueryable paidpymts;
+            using (var connection = new SqlConnection(sett.ConString))
             {
-                 paidpymts = connection.ExecuteQuery<PaymentByCust>("[dbo].[usp_getPymtByCust]",
+                paidpymts = connection.ExecuteQuery<PaymentByCust>("[dbo].[usp_getPymtByCust]",
                 commandType: System.Data.CommandType.StoredProcedure).ToList();
             }
-          return paidpymts;
+            return paidpymts.AsQueryable();
         }
 
           public List<PaymentMain> GetPaidPymtsByCust(string enteredby)
@@ -658,6 +660,7 @@ namespace DiningVsCodeNew
 
          
     }
+    
      public class VoucherRepository: BaseRepository<Voucher, SqlConnection>
     {
         Setting sett=new Setting();

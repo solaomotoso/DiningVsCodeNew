@@ -82,3 +82,8 @@ C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\pu
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\appsettings.json
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\DiningVsCodeNew.deps.json
 C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\DiningVsCodeNew.runtimeconfig.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\publish\web.config
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\publish\appsettings.Development.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\publish\appsettings.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\publish\DiningVsCodeNew.deps.json
+C:\Users\olusola.omotoso\Documents\Angular\DiningVsCodeNew\bin\Release\net6.0\publish\publish\DiningVsCodeNew.runtimeconfig.json
