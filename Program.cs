@@ -2,6 +2,8 @@ using DiningVsCodeNew;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Sieve.Models;
+using Sieve.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +31,8 @@ builder.Services.AddAuthentication(opt => {
     });
 builder.Services.AddControllers();
 builder.Services.AddScoped<IEmailSender, EmailSender>();
+builder.Services.AddScoped<ISieveProcessor, SieveProcessor>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -51,6 +55,7 @@ builder.Services.AddSingleton<OrderedMealRepository>();
 builder.Services.AddSingleton<OnlinePaymentRepository>();
 builder.Services.AddSingleton<ServedRepository>();
 builder.Services.AddSingleton<CustomerRouteRepository>();
+builder.Services.AddSingleton<SieveProcessor>();
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 builder.Services.AddCors(options =>
 {
